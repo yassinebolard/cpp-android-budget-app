@@ -7,8 +7,8 @@ Here is the feature breakdown for Version 1.0 (Local MVP).
 
 | Priority           | Feature Description                                                                                                                                          |
 |:-------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| 🟢 **Must Have**   | **(Technical) C++ Core:** All business logic (calculations, data management) **must** be implemented in native C++ (C++17/20).                               |
-| 🟢 **Must Have**   | **(Technical) JNI Bridge:** A JNI interface (`native-lib.cpp`) **must** exist for UI (Kotlin) <-> C++ communication.                                         |
+| 🟢 **Must Have** ✅ | **(Technical) C++ Core:** All business logic (calculations, data management) **must** be implemented in native C++ (C++17/20).                               |
+| 🟢 **Must Have** ✅ | **(Technical) JNI Bridge:** A JNI interface (`native-lib.cpp`) **must** exist for UI (Kotlin) <-> C++ communication.                                         |
 | 🟢 **Must Have**   | **(Technical) CMake Compilation:** The project **must** be compiled entirely via `CMakeLists.txt`.                                                           |
 | 🟢 **Must Have**   | **(Technical) Data Persistence:** Accounts and transactions **must** be saved persistently on the device (via **SQLite** used from C++).                     |
 | 🟢 **Must Have**   | **(Functional) Account Management:** The user **must** be able to create, view, and delete simulated bank accounts (e.g., Checking, Savings).                |

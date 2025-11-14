@@ -1,9 +1,9 @@
-package com.yassb.budget_app
+package com.yassb.budgetapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
-import com.yassb.budget_app.databinding.ActivityMainBinding
+import com.yassb.budgetapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,15 +20,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
-     * A native method that is implemented by the 'budget_app' native library,
+     * A native method that is implemented by the 'budgetapp' native library,
      * which is packaged with this application.
      */
     external fun stringFromJNI(): String
 
     companion object {
-        // Used to load the 'budget_app' library on application startup.
+        // Used to load the 'budgetapp' library on application startup.
         init {
-            System.loadLibrary("budget_app")
+            System.loadLibrary("budgetapp")
         }
     }
 }

@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.yassb.budget_app"
+    namespace = "com.yassb.budgetapp"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.yassb.budget_app"
+        applicationId = "com.yassb.budgetapp"
         minSdk = 36
         targetSdk = 36
         versionCode = 1

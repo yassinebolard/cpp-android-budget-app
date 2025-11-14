@@ -19,5 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "cpp-android-budget-app"
+rootProject.name = "BudgetApp"
 include(":app")
+ 

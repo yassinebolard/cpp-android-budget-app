@@ -1,4 +1,4 @@
-package com.yassb.budget_app
+package com.yassb.budgetapp
 
 import org.junit.Test
 
