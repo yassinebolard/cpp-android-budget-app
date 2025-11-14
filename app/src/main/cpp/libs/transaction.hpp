@@ -1,0 +1,8 @@
+//
+// Created by yass on 11/14/25.
+//
+
+#ifndef BUDGETAPP_TRANSACTION_HPP
+#define BUDGETAPP_TRANSACTION_HPP
+
+#endif //BUDGETAPP_TRANSACTION_HPP
