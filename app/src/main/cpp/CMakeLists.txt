@@ -32,7 +32,8 @@ add_library(${CMAKE_PROJECT_NAME} SHARED
         # List C/C++ source files with relative paths to this CMakeLists.txt.
         native-lib.cpp
         libs/account.cpp
-        libs/transaction.cpp)
+        libs/transaction.cpp
+        libs/budget_manager.cpp)
 
 # Tell CMake where to find our header files (.hpp)
 target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE

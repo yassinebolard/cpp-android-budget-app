@@ -5,9 +5,11 @@
 #ifndef BUDGETAPP_ACCOUNT_HPP
 #define BUDGETAPP_ACCOUNT_HPP
 
+#include "transaction.hpp"
 #include <iostream>
 #include <string>
 #include <cstdint>
+#include <vector>
 
 class Account{
     public:
@@ -20,9 +22,10 @@ class Account{
 
     private:
         /* Attributes */
-        std::string m_name;
-        int64_t m_balance;
+        std::string m_name{};
+        int64_t m_balance{};
         account_type_t m_type{DEFAULT_ACCOUNT_TYPE};
+        std::vector<Transaction> m_transactions{};
 
         /* Private functions to change values of attributes */
         void set_name(std::string new_name) noexcept { this->m_name = std::move(new_name); };
@@ -40,6 +43,9 @@ class Account{
         [[nodiscard]] account_type_t getType() const noexcept { return this->m_type; };
         void deposit(int64_t amount) noexcept;
         void withdraw(int64_t amount) noexcept;
+        void addTransaction(const Transaction& new_transaction) noexcept;
+        void removeTransaction(const Transaction& r_transaction);
+        std::vector<Transaction> getTransactions() const noexcept { return this->m_transactions; };
 };
 
 #endif //BUDGETAPP_ACCOUNT_HPP

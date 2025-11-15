@@ -25,6 +25,7 @@ class Transaction {
         [[nodiscard]] int64_t getAmountCents() const noexcept { return this->m_amount_cents; };
         [[nodiscard]] std::string getDescription() const noexcept { return this->m_description; };
         [[nodiscard]] std::chrono::system_clock::time_point getDate() const noexcept { return this->m_date; };
+        [[nodiscard]] bool operator==(const Transaction& other) const noexcept;
 };
 
 #endif //BUDGETAPP_TRANSACTION_HPP
