@@ -5,40 +5,23 @@
 #include "account.hpp"
 #include <algorithm>
 #include <string>
-
-void Account::deposit(int64_t amount) noexcept {
-    int64_t balance = this->getBalance();
-    balance = balance + amount;
-
-    this->set_balance(balance);
-};
-
-void Account::withdraw(int64_t amount) noexcept {
-    int64_t balance = this->getBalance();
-    balance = balance - amount;
-
-    this->set_balance(balance);
-};
+#include <format>
 
 void Account::addTransaction(const Transaction& new_transaction) noexcept {
-    auto position = std::find(this->m_transactions.begin(), this->m_transactions.end(), new_transaction);
-    if (position == this->m_transactions.end()) {
-        this->m_transactions.insert(this->m_transactions.end(), new_transaction);
-        this->deposit(new_transaction.getAmountCents());
-    }
-};
+    // Add the transaction to the log.
+    this->m_transactions.push_back(new_transaction);
+
+    // Update the balance.
+    this->deposit(new_transaction.getAmountCents());
+}
 
 void Account::removeTransaction(const Transaction& r_transaction) {
     auto position = std::find(this->m_transactions.begin(), this->m_transactions.end(), r_transaction);
-    if (position != this->m_transactions.end()) {
-        // Adjust the balance before removing the transaction
-        // We subtract the transaction's amount
-        this->withdraw(r_transaction.getAmountCents());
 
-        // Erase the transaction from the vector
+    if (position != this->m_transactions.end()) {
+        // We use withdraw() because it correctly does (balance - amount)
+        this->withdraw(position->getAmountCents());
         this->m_transactions.erase(position);
-    } else {
-        std::string errorMessage = std::format("Transaction {} of {} doesn't exist in the account", r_transaction.getDescription(), r_transaction.getAmountCents());
-        throw std::invalid_argument(errorMessage);
     }
-};
+    // If not found (else block), do nothing. It's not an error.
+}

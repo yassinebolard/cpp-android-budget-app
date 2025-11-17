@@ -27,25 +27,25 @@ class Account{
         account_type_t m_type{DEFAULT_ACCOUNT_TYPE};
         std::vector<Transaction> m_transactions{};
 
-        /* Private functions to change values of attributes */
-        void set_name(std::string new_name) noexcept { this->m_name = std::move(new_name); };
+        /* Private functions to change values of attributes MAY BE USED IN THE FUTURE */
+        /* void set_name(std::string new_name) noexcept { this->m_name = std::move(new_name); };
         void set_balance(int64_t new_balance) noexcept { this->m_balance = new_balance; };
-        void set_type(account_type_t new_type) noexcept { this->m_type = new_type; };
+        void set_type(account_type_t new_type) noexcept { this->m_type = new_type; }; */
 
     public:
         /* Constructor / Destructor */
-        Account() = default;
+        Account() = delete; // Disallow creating an empty/zombie account
         explicit Account(std::string name, int64_t balance, account_type_t type) : m_name{std::move(name)}, m_balance{balance}, m_type{type} {};
         virtual ~Account() = default;
 
         [[nodiscard]] std::string getName() const noexcept { return this->m_name; };
         [[nodiscard]] int64_t getBalance() const noexcept { return this->m_balance; };
         [[nodiscard]] account_type_t getType() const noexcept { return this->m_type; };
-        void deposit(int64_t amount) noexcept;
-        void withdraw(int64_t amount) noexcept;
+        void deposit(int64_t amount) noexcept { this->m_balance += amount; };
+        void withdraw(int64_t amount) noexcept { this->m_balance -= amount; };
         void addTransaction(const Transaction& new_transaction) noexcept;
         void removeTransaction(const Transaction& r_transaction);
-        std::vector<Transaction> getTransactions() const noexcept { return this->m_transactions; };
+        [[nodiscard]] const std::vector<Transaction>& getTransactions() const noexcept { return this->m_transactions; };
 };
 
-#endif //BUDGETAPP_ACCOUNT_HPP
+#endif // BUDGETAPP_ACCOUNT_HPP
